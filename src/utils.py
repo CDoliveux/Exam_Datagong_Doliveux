@@ -134,3 +134,28 @@ def kpi_tx_reachat(df, annee):
     # Taux de ré-achat
     tx_reachat = clients_reacheteurs / total_clients if total_clients > 0 else 0
     return tx_reachat
+
+
+# Création de la fonction curreny pour optimiser les graphiques
+# La fonction currency permet de modifier l'affichage des valeurs sur l'axis y
+def currency(x, pos):
+    """
+    Format currency values in euros as K€ or M€.
+
+    Parameters
+    ----------
+    x : float
+        Currency value in euros.
+    pos : int
+        Tick position (unused).
+
+    Returns
+    -------
+    str
+        Formatted currency string.
+    """
+    if x >= 1e3:
+        pos = '{:1.1f}M€'.format(x /1000)
+    else:
+        pos = '{:1.0f}K€'.format(x)
+    return pos
