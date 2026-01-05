@@ -62,7 +62,7 @@ def kpi_panier_moyen(df, dimensions=None):
         else:
             return ca_par_commande.mean()
     
-    # Cas 2 : panier moyen décliné par dimensions
+    # Cas 2 : panier moyen (commande moyenne) par dimensions
     df_cmd = (df.groupby(dimensions + ['order_id'])['sale_price'].sum().reset_index())
 
     df_cmd = df_cmd[df_cmd['sale_price'] > 0]
@@ -155,7 +155,7 @@ def currency(x, pos):
         Formatted currency string.
     """
     if x >= 1e3:
-        pos = '{:1.1f}M€'.format(x /1000)
+        pos = '{:1.1f}K€'.format(x /1000)
     else:
-        pos = '{:1.0f}K€'.format(x)
+        pos = '{:1.0f}€'.format(x)
     return pos
