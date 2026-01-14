@@ -83,10 +83,7 @@ def kpi_Margin(df,dimensions=None):
         .reset_index() permet de transformer l'index en colonne, ce qui est plus lisible
         name = "marge" permet d'avoir un titre plus compréhensible
         Df_WIP : dataframe intermediarei(Work In Progress) permettant d'ajouter une colonne marge (plus sûr que de modifier directement dans df)
-
-
-    :param df: Description
-    :param dimensions: Description
+    
     """
     df_WIP=df.assign(margin=df["sale_price"]-df["cost"])
     if dimensions is None:
