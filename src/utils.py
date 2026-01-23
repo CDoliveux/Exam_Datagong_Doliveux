@@ -231,7 +231,7 @@ def kpi_tx_reachat(df, annee):
 
     Args :
         df : DataFrame
-            DataFrame contenant au minimum les colonnes 'order_status', 'delivered_at', 'user_id' et 'order_id'.
+            DataFrame contenant au minimum les colonnes 'order_status', 'item_created_at', 'user_id' et 'order_id'.
         annee : int
             Année sur laquelle calculer le taux de ré-achat (ex. 2023).
 
@@ -246,7 +246,7 @@ def kpi_tx_reachat(df, annee):
     # Filtrer les commandes complètes
     df_complete = df[df['order_status'] == 'Complete'].copy()
     #Filtrer sur l'année 
-    df_complete = df_complete[df_complete['delivered_at'].dt.year == annee]
+    df_complete = df_complete[df_complete['item_created_at'].dt.year == annee]
     # Compter le nombre de commandes par client
     commandes_par_client = df_complete.groupby('user_id')['order_id'].nunique()
     # Clients avec ≥2 commandes
