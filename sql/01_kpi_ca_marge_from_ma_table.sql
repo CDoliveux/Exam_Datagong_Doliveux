@@ -6,7 +6,7 @@ SELECT
   state,
   SUM(sale_price) AS CA,
   SUM(sale_price - cost) AS Margin
-FROM `dataset.ma_table`
+FROM `dataset.ma_table_2`
 
 
 WHERE order_status = 'Complete'

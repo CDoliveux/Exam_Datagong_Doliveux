@@ -9,7 +9,7 @@ SELECT
       category,
       order_id,
      SUM(sale_price) AS order_total
-    FROM `dataset.ma_table`
+    FROM `dataset.ma_table_2`
     WHERE order_status = 'Complete' 
     GROUP BY year, category, order_id
     ) AS subquery

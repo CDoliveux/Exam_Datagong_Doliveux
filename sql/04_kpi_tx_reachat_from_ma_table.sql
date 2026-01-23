@@ -3,7 +3,7 @@ WITH commandes_complete AS ( -- creation de la CTE qui regroupe juste les comman
     EXTRACT(YEAR FROM item_created_at) AS year,
     user_id,
     order_id
-  FROM `dataset.ma_table`
+  FROM `dataset.ma_table_2`
   WHERE order_status = 'Complete'),
 
 commandes_par_client AS ( -- creation de la CTE qui compte le nombre de commandes par user_id (donc pasr client)
