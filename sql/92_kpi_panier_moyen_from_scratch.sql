@@ -5,7 +5,7 @@ SELECT
 FROM (
   SELECT
     O.order_id,
-    EXTRACT(YEAR FROM O.created_at) AS year,
+    EXTRACT(YEAR FROM I.created_at) AS year,
     P.category,
     SUM(I.sale_price) AS order_total
   FROM `bigquery-public-data.thelook_ecommerce.orders` AS O
@@ -14,8 +14,8 @@ FROM (
   LEFT JOIN `bigquery-public-data.thelook_ecommerce.products` AS P
     ON P.id = I.product_id
   LEFT JOIN `bigquery-public-data.thelook_ecommerce.users` AS U
-    ON U.id = O.user_id
-    
+  ON U.id = O.user_id
+  
   WHERE O.status = 'Complete'
   AND U.country = 'France'
   AND P.department = 'Women'
@@ -26,5 +26,3 @@ FROM (
  
 GROUP BY year, category
 ORDER BY year, category
-
--- DRAFT - A COMPLETER ET VERIFIER, INCOHERENCES AVEC CSV FOURNI 
