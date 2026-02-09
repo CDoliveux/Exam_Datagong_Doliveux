@@ -29,3 +29,8 @@ LEFT JOIN 'bigquery-public-data.thelook_ecommerce.users' AS U
 WHERE U.country = 'France'
     AND P.department = 'Women'
     AND DATE(I.created_at) BETWEEN '2023-01-01' AND '2024-12-31'
+
+ORDER BY
+    I.created_at,
+    O.order_id,
+    I.id;
